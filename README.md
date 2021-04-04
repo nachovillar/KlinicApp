@@ -1,2 +1,2 @@
-# KlinicApp
- Aplicación que ayuda a los médicos a organizar la información de sus paciente.
+# GAM - v0.0.1
+software para centros médicos

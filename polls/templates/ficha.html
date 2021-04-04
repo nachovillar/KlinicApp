@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+
+    <title>Nueva Ficha</title>
+</head>
+
+<body>
+    <div class='container'>
+        <h1>GAM - v0.0</h1>
+        <hr>
+        <h2>Nueva ficha de atención</h2>
+        {%if msg %}
+        <p style='color:red'>
+            <strong>{{msg}}</strong>
+        </p>
+        <br>
+        {% endif %}
+        {%if p == 'Hola' %}
+        <p style='color:red'>
+            <strong>Paciente no encontrado</strong>
+        </p>
+        <br>
+        {% else %}
+        <h5>Paciente: {{p.nombres_p}} {{p.apellidos_p}} - {{p.rut_p}}</h5>
+        {%endif%}
+        <form action="{% url 'crear_ficha' p.rut_p %} " method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="fecha">Fecha de la atención</label>
+                <p>{{ficha.dia_fhc_fm}} / {{ficha.mes_fch_fm}} / {{ficha.anio_fch_fm}}</p>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="motivo">Motivo</label>
+                <textarea type="text" class="form-control" id="motivo" name="motivo" readonly>{{ficha.motivo_fm}}</textarea>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="diag">Diagnóstico</label>
+                <textarea type="text" class="form-control" id="diag" name="diag" readonly>{{ficha.diagnostico_fm}}</textarea>
+            </div>
+            <br>
+
+            
+        </form>
+        <br>
+
+    </div>
+    </div>
+    <footer>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2021 Copyright:
+            <a class="text-dark" href="https://www.linkedin.com/in/pabrego" target="_blank">Pablo Ábrego</a>
+        </div>
+    </footer>
+    </div>
+</body>
+
+</html>
